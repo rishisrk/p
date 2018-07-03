@@ -7,6 +7,7 @@ using namespace std;
 #define MAX_PID 1000
 int threadVar = 0;
 pthread_mutex_t mutex;
+ bool bitmap;
 struct pid_tab
 {
   int pid;
@@ -45,7 +46,7 @@ int allocate_map(void)
     }
     return-1;
     }
-    void release_pid(intpid)
+    void release_pid(int pid)
     {
     for(int i=0;i<=900;i++)
     {
@@ -74,15 +75,15 @@ int allocate_map(void)
     sleep(5);
     release_pid(ret);
     }
+    void sleep( unsigned milliseconds)
+    {
+    Sleep(milliseconds);
+    }
     int main()
     {
     int i=0;
     pthread_t thread[100];
-    cout<<"\n 100 threads created.
-    Every thread will print the value of 
-    variable'threadVar' and incrementit
-    by 1 with a delay of 100ms each
-    process execution";
+    cout<<"\n 100 threads created.Every thread will print the value of variable'threadVar' and incrementit by 1 with a delay of 100ms each process execution";
     sleep(3000);
     for(i=0;i<100;i++)
     {
